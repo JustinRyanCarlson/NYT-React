@@ -1,1 +1,1 @@
-# React-HW
+# New York Times React.js Application
