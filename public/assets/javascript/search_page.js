@@ -15,6 +15,8 @@ $(document.body).on('click', '#submit', function () {
 
     console.log(query);
 
+    $('#topic, #start-year, #end-year').val('');
+
     $.get(query, function (articles) {
         console.log(articles);
     });
