@@ -8,7 +8,7 @@ var favicon = require('serve-favicon');
 var PORT = process.env.PORT || 8080;
 
 // Connects to the MongoDB.
-mongoose.connect('test/NYT_REACT');
+mongoose.connect('mongodb://localhost/test');
 
 // Prints to the console when the connection is complete.
 var db = mongoose.connection;
@@ -33,7 +33,7 @@ app.use(bodyParser.json({
     type: "application/vnd.api+json"
 }));
 app.use(express.static(__dirname + '/public/assets'));
-app.use(favicon(__dirname + '/public/assets/img/favicon.ico'));
+// app.use(favicon(__dirname + '/public/assets/img/favicon.ico'));
 
 
 // Requires the routes from the controller.js file and sets the middleware
