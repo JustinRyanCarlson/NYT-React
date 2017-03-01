@@ -1,0 +1,28 @@
+{
+  "name": "NYT-React",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustinRyanCarlson/NYT-React.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JustinRyanCarlson/NYT-React/issues"
+  },
+  "homepage": "https://github.com/JustinRyanCarlson/NYT-React#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.8.5",
+    "serve-favicon": "^2.4.1"
+  }
+}
