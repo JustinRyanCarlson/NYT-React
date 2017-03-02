@@ -1,12 +1,9 @@
+// Include the Main React Dependencies
 var React = require("react");
 var ReactDOM = require("react-dom");
-var Results = require("./components/results");
-var Saved = require("./components/saved_articles")
 
-var where = document.getElementById("results");
+// Include the main Main Component
+var Main = require("./components/Main");
 
-ReactDOM.render(
-    <div>
-        <Roster />
-    </div>
-    , where);
+// This code here allows us to render our main component (in this case Main)
+ReactDOM.render(<Main />, document.getElementById("app"));

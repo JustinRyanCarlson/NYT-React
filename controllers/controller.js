@@ -42,6 +42,7 @@ router.get('*', function (req, res) {
     var dir = __dirname;
     var dirSplit = dir.split('controller');
     dir = dirSplit[0];
+
     res.sendFile(dir + 'public/assets/index.html');
 });
 

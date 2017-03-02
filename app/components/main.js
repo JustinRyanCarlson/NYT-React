@@ -1,14 +1,24 @@
-// Include the Main React Dependencies
+// Include the Main React Dependency
 var React = require("react");
-var ReactDOM = require("react-dom");
-
-// Include the main Main Component
-var Main = require("./components/Main");
 
 // Include children components
 var Form = require("./children/form");
 var Results = require("./children/Results");
 var Saved = require("./children/saved_articles");
 
-// This code here allows us to render our main component (in this case Main)
-ReactDOM.render(<Main />, document.getElementById("app"));
+// Creating the Main component
+var Main = React.createClass({
+    // Here we render the function
+    render: function () {
+        return (
+            <div>
+                <Form />
+                <Results />
+                <Saved />
+            </div>
+        );
+    }
+});
+
+// Export the component back for use in other files
+module.exports = Main;
