@@ -1,7 +1,6 @@
 // Requires various packages, makes express app.
 var express = require('express');
 var app = express();
-var exphbs = require("express-handlebars");
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var favicon = require('serve-favicon');
@@ -17,11 +16,6 @@ db.once('open', function () {
     console.log("MongoDB connected");
 });
 
-// Looks at available engines and sets the view engine to Handlebars.
-app.engine("handlebars", exphbs({
-    defaultLayout: "main"
-}));
-app.set("view engine", "handlebars");
 
 // Middleware
 app.use(bodyParser.json());

@@ -39,7 +39,10 @@ router.delete('/api/saved', function (req, res) {
 });
 
 router.get('*', function (req, res) {
-    res.render('search_page.handlebars');
+    var dir = __dirname;
+    var dirSplit = dir.split('controller');
+    dir = dirSplit[0];
+    res.sendFile(dir + 'public/assets/index.html');
 });
 
 // Export routes for server.js to use.
