@@ -15,8 +15,12 @@ router.get('/api/saved', function (req, res) {
 });
 
 router.post('/api/saved', function (req, res) {
-    var newArticle = req.body;
-    // need to see what data ill be getting from the front end
+    var newArticle = new articles({
+        title: req.body.title,
+        date: req.body.date,
+        url: req.body.url
+    });
+
     newArticle.save(function (err, article) {
         if (err) {
             console.log(err);
