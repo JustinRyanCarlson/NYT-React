@@ -16,9 +16,9 @@ router.get('/api/saved', function (req, res) {
 
 router.post('/api/saved', function (req, res) {
     var newArticle = new articles({
-        title: req.body.title,
-        date: req.body.date,
-        url: req.body.url
+        title: req.body.abstract,
+        date: req.body.pub_date,
+        url: req.body.web_url
     });
 
     newArticle.save(function (err, article) {
@@ -30,10 +30,8 @@ router.post('/api/saved', function (req, res) {
     });
 });
 
-router.delete('/api/saved', function (req, res) {
-    var articleId = req.body;
-
-    articleId.findByIdAndRemove(articleId, function (err, article) {
+router.delete('/api/saved/:id', function (req, res) {
+    articles.findByIdAndRemove(req.params.id, function (err, article) {
         if (err) {
             console.log(err);
         } else {

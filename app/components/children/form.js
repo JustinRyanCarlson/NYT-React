@@ -36,7 +36,6 @@ var Form = React.createClass({
         // prevent the HTML from trying to submit a form if the user hits "Enter" instead of
         // clicking the button
         event.preventDefault();
-        console.log(this.state.topicSearched, this.state.startYear, this.state.endYear);
         // Set the parent to have the terms
         this.props.setTerm(this.state.topicSearched, this.state.startYear, this.state.endYear);
         this.setState({
@@ -50,7 +49,7 @@ var Form = React.createClass({
         return (
             <div className="row">
                 <div className="col-sm-12">
-                    <div className="panel panel-default">
+                    <div className="panel panel-info">
                         <div className="panel-heading">Search</div>
                         <div className="panel-body">
                             <form onSubmit={this.handleSubmit}>

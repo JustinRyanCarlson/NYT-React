@@ -21,7 +21,6 @@ var Main = React.createClass({
 
     componentDidMount: function () {
         axios.get("/api/saved").then(function (response) {
-            console.log(response);
             if (response !== this.state.history) {
                 this.setState({ history: response.data });
             }
@@ -40,7 +39,6 @@ var Main = React.createClass({
 
             axios.get(query)
                 .then(function (response) {
-                    console.log(response.data.response.docs);
 
                     this.setState({
                         topicSearched: "",
@@ -75,13 +73,44 @@ var Main = React.createClass({
             endYear: end
         });
     },
+
+    setSave: function (index) {
+        var currentResults = this.state.results;
+
+        axios.post('/api/saved', this.state.results[index])
+            .then(function (response) {
+                var newResults = currentResults;
+                var newResultsDel = newResults.splice(index, 1);
+                this.setState({
+                    results: newResults
+                });
+
+                axios.get("/api/saved").then(function (response) {
+                    if (response !== this.state.history) {
+                        this.setState({ history: response.data });
+                    }
+                }.bind(this));
+            }.bind(this))
+    },
+
+    setDelete: function (id) {
+        axios.delete('/api/saved/' + id)
+            .then(function (response) {
+                axios.get("/api/saved").then(function (response) {
+                    if (response !== this.state.history) {
+                        this.setState({ history: response.data });
+                    }
+                }.bind(this));
+            }.bind(this))
+    },
+
     // Here we render the function
     render: function () {
         return (
             <div>
                 <Form setTerm={this.setTerm} />
-                <Results articles={this.state.results} />
-                <Saved savedArticles={this.state.history} />
+                <Results articles={this.state.results} setSave={this.setSave} />
+                <Saved savedArticles={this.state.history} setDelete={this.setDelete} />
             </div>
         );
     }

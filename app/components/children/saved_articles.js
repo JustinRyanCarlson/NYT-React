@@ -1,17 +1,20 @@
 var React = require("react");
 
 var Saved = React.createClass({
+    onClickDelete: function (id) {
+        this.props.setDelete(id);
+    },
     render: function () {
         return (
             <div className="row">
                 <div className="col-sm-12">
-                    <div className="panel panel-default">
+                    <div className="panel panel-warning">
                         <div className="panel-heading">Saved Articles</div>
                         <div id="saved-articles" className="panel-body">
-                            {this.props.savedArticles.map(function (search, i) {
+                            {this.props.savedArticles.map((search, i) => {
                                 return (
                                     <div className="panel panel-default" key={i}>
-                                        <div className="panel-heading">{search.url}<button className="pull-right btn btn-info" id={i}>Delete</button>
+                                        <div className="panel-heading">{search.url}<button className="pull-right btn btn-info" onClick={() => this.onClickDelete(search._id)} id={search._id}>Delete</button>
                                             <div className="clearfix"></div>
                                         </div>
                                         <div className="panel-body">
