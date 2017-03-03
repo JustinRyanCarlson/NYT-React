@@ -41,12 +41,26 @@ var Main = React.createClass({
             axios.get(query)
                 .then(function (response) {
                     console.log(response.data.response.docs);
+
                     this.setState({
                         topicSearched: "",
                         startYear: "",
                         endYear: ""
                     });
-                    this.setState({ results: response.data.response.docs });
+
+                    var queryResults = [];
+                    for (var i = 0; i < 5; i++) {
+                        var date = response.data.response.docs[i].pub_date.split('T');
+                        date = date[0];
+                        var articleObj = {
+                            abstract: response.data.response.docs[i].abstract,
+                            pub_date: date,
+                            web_url: response.data.response.docs[i].web_url
+                        }
+                        queryResults.push(articleObj);
+                    }
+
+                    this.setState({ results: queryResults });
                 }.bind(this))
                 .catch(function (error) {
                     console.log(error);
