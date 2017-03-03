@@ -33,16 +33,8 @@ var Main = React.createClass({
             var queryString = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
             var apiKey = "?api-key=743707e5f8f44f1ca8c6aab3a1a11f39"
             var topic = '&q=' + this.state.topicSearched;
-
-            var startManipulate = this.state.startYear;
-            startManipulate = startManipulate.split('-');
-            startManipulate = startManipulate.join('');
-            var startYear = '&begin_date=' + startManipulate;
-
-            var endManipulate = this.state.endYear;
-            endManipulate = endManipulate.split('-');
-            endManipulate = endManipulate.join('');
-            var endYear = '&end_date=' + endManipulate;
+            var startYear = '&begin_date=' + this.state.startYear.split('-').join('');
+            var endYear = '&end_date=' + this.state.endYear.split('-').join('');
 
             var query = queryString + apiKey + topic + startYear + endYear;
 
