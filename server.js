@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var PORT = process.env.PORT || 8080;
 
 // Connects to the MongoDB.
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://heroku_t70h2m43:6fvcj552i3elskl45j7vb2sknc@ds115870.mlab.com:15870/heroku_t70h2m43');
 
 // Prints to the console when the connection is complete.
 var db = mongoose.connection;
