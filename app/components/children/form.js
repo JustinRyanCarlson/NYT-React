@@ -11,6 +11,8 @@ var Form = React.createClass({
         };
     },
 
+    // This function is called when the input in the topic field is changed. Sets 
+    // the topic state.
     handleTopicChange: function (event) {
         this.setState({
             topicSearched: event.target.value,
@@ -18,6 +20,8 @@ var Form = React.createClass({
 
     },
 
+    // This function is called when the input in the start field is changed. Sets 
+    // the start state.
     handleStartChange: function (event) {
         this.setState({
             startYear: event.target.value,
@@ -25,6 +29,8 @@ var Form = React.createClass({
 
     },
 
+    // This function is called when the input in the end field is changed. Sets 
+    // the end state.
     handleEndChange: function (event) {
         this.setState({
             endYear: event.target.value
@@ -32,6 +38,8 @@ var Form = React.createClass({
 
     },
 
+    // This function is called when the submit button is clicked. Sets the states of topic
+    // end and start year in main.js.
     handleSubmit: function (event) {
         // prevent the HTML from trying to submit a form if the user hits "Enter" instead of
         // clicking the button

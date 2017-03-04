@@ -9,6 +9,7 @@ var Saved = require("./children/saved_articles");
 
 // Creating the Main component
 var Main = React.createClass({
+    // Sets the initial state of the component.
     getInitialState: function () {
         return {
             topicSearched: "",
@@ -19,6 +20,8 @@ var Main = React.createClass({
         };
     },
 
+    // Once the component mounts, this code block is ran. Gets documents from the database
+    // and sets the history state equal to them.
     componentDidMount: function () {
         axios.get("/api/saved").then(function (response) {
             if (response !== this.state.history) {
@@ -27,6 +30,8 @@ var Main = React.createClass({
         }.bind(this));
     },
 
+    // Once the form is submitted this function is ran. Queries the NYT API and the sets the 
+    // results state equal to the first 5 results.
     componentDidUpdate: function () {
         if (this.state.topicSearched != "") {
             var queryString = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
@@ -66,6 +71,7 @@ var Main = React.createClass({
         } else { }
     },
 
+    // Passed into form.js to be able to set the forms states.
     setTerm: function (topic, start, end) {
         this.setState({
             topicSearched: topic,
@@ -74,6 +80,8 @@ var Main = React.createClass({
         });
     },
 
+    // Passed into results.js so the save article button clicked can be saved then
+    // the results and history states are set again.
     setSave: function (index) {
         var currentResults = this.state.results;
 
@@ -93,6 +101,8 @@ var Main = React.createClass({
             }.bind(this))
     },
 
+    // Passed into saved_articles.js so the delete article button clicked can be deleted
+    // then the history state is set.
     setDelete: function (id) {
         axios.delete('/api/saved/' + id)
             .then(function (response) {

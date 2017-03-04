@@ -1,9 +1,13 @@
 var React = require("react");
 
 var Saved = React.createClass({
+
+    // // Function is ran when a button is clicked in this component. Calls the setDelete function
+    // and passes in the index of what we want to manipulate.
     onClickDelete: function (id) {
         this.props.setDelete(id);
     },
+
     render: function () {
         return (
             <div className="row">

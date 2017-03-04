@@ -3,7 +3,6 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var favicon = require('serve-favicon');
 var PORT = process.env.PORT || 8080;
 
 // Connects to the MongoDB.
@@ -27,7 +26,6 @@ app.use(bodyParser.json({
     type: "application/vnd.api+json"
 }));
 app.use(express.static(__dirname + '/public/assets'));
-// app.use(favicon(__dirname + '/public/assets/img/favicon.ico'));
 
 
 // Requires the routes from the controller.js file and sets the middleware

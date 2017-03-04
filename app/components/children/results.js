@@ -1,9 +1,13 @@
 var React = require("react");
 
 var Results = React.createClass({
+
+    // Function is ran when a button is clicked in this component. Calls the setSave function
+    // and passes in the index of what we want to manipulate.
     onClickSave: function (i) {
         this.props.setSave(i);
     },
+
     render: function () {
         return (
             <div className="row">

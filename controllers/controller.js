@@ -3,7 +3,7 @@ var router = express.Router();
 var articles = require('./../models/articles.js');
 
 
-
+// Get route that will return everything from the database.
 router.get('/api/saved', function (req, res) {
     articles.find({}, function (err, articles) {
         if (err) {
@@ -14,6 +14,7 @@ router.get('/api/saved', function (req, res) {
     });
 });
 
+// POST route that will create a new document in the database.
 router.post('/api/saved', function (req, res) {
     var newArticle = new articles({
         title: req.body.abstract,
@@ -30,6 +31,7 @@ router.post('/api/saved', function (req, res) {
     });
 });
 
+// DELETE route that will delete a document from the database.
 router.delete('/api/saved/:id', function (req, res) {
     articles.findByIdAndRemove(req.params.id, function (err, article) {
         if (err) {
@@ -40,6 +42,7 @@ router.delete('/api/saved/:id', function (req, res) {
     });
 });
 
+// GET route that is the deafult route if the routes before it are not hit.
 router.get('*', function (req, res) {
     var dir = __dirname;
     var dirSplit = dir.split('controller');
